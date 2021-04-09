@@ -41,6 +41,13 @@ class Credentials:
         method/attribute to delete a credential object that is no longer in use
         '''
         Credentials.cred_list.remove(self)
+    
+    @classmethod
+    def display_credentials(cls):
+        '''
+        method to display all the credentials in the cred_list list
+        '''
+        return cls.cred_list
 
     
   
