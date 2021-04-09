@@ -16,6 +16,12 @@ class User:
         self.username = username
         self.password = password
 
+    def save_user(self):
+        '''
+        method to ensure that our user objects are being saved in the app
+        '''
+        User.user_list.append(self)
+
 
 class Credentials:
     '''

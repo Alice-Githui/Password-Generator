@@ -25,6 +25,12 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.username, "alice")
         self.assertEqual(self.new_user.password, "qwerty")
+    
+    def test_save_user(self):
+        '''
+        test to confirm that our user objects are being saved in the app
+        '''
+        self.new_user.save_user()
 
 
 class TestCredentials(unittest.TestCase):
