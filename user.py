@@ -36,5 +36,11 @@ class Credentials:
         '''
         Credentials.cred_list.append(self)
 
+    def delete_credentials(self):
+        '''
+        method/attribute to delete a credential object that is no longer in use
+        '''
+        Credentials.cred_list.remove(self)
+
     
   
