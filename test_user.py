@@ -1,6 +1,8 @@
 import unittest
+import user
 
 from user import User 
+from user import Credentials
 
 class TestUser(unittest.TestCase):
     '''
@@ -24,5 +26,29 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.username, "alice")
         self.assertEqual(self.new_user.password, "qwerty")
 
+
+class TestCredentials(unittest.TestCase):
+    '''
+    Test that defines test cases for our objets
+    '''
+
+    def setUp(self):
+        '''
+        set up method that determines the properties of the credentials object
+        '''
+        self.new_credentials = Credentials("githui", "1wergxvh")
+
+    def test_init(self):
+        '''
+        test that checks if our program instatiates as it should
+        '''
+
+        self.assertEqual(self.new_credentials.account_user_name, "githui")
+        self.assertEqual(self.new_credentials.account_password, "1wergxvh")
+
+
 if __name__ == "__main__":
     unittest.main()
+
+
+
