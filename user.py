@@ -52,6 +52,15 @@ class Credentials:
         Credentials.cred_list.remove(self)
     
     @classmethod
+    def find_credentials(cls, account_type):
+        '''
+        method that checks if an account exists and returns that account
+        '''
+        for credentials in cls.cred_list:
+            if credentials.account_type == account_type:
+                return credentials
+    
+    @classmethod
     def display_credentials(cls):
         '''
         method to display all the credentials in the cred_list list

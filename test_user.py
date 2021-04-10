@@ -79,6 +79,19 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(len(Credentials.cred_list), 2)
 
+    def test_find_credentials(self):
+        '''
+        test to check if we can retrieve an existing credential and display it
+        '''
+        self.new_credentials = Credentials("Twitter", "Alice", "ecila")
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Twitter", "gith", "tui")
+        test_credentials.save_credentials()
+
+        find_credentials = Credentials.find_credentials("Twitter")
+        self.assertTrue(find_credentials)
+
+
     def test_delete_credentials(self):
         '''
         test that checks if we can delete a credential object that is no longer being used

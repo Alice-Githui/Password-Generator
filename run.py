@@ -16,23 +16,30 @@ def save_new_user(user):
     '''
     user.save_user()
 
-def create_credentials(account, account_username, account_password):
+def create_credentials(account, account_username, acc_password):
     '''
     Function that creates new account credentials
     '''
-    new_credentials = Credentials(account, account_username, account_password)
+    new_credentials = Credentials(account, account_username, acc_password)
+    return new_credentials
 
 def save_credentials(credentials):
     '''
     Function that saves new credentials that are generates
     '''
-    credentials.save_new_credentials()
+    credentials.save_credentials()
 
 def delete_credentials(credentials):
     '''
     Function that deletes the credentials that are no longer being used
     '''
     credentials.delete_credentials()
+
+def find_credentials(account_type):
+    '''
+    Function that returns a credential if it exists in the cred_list 
+    '''
+    return Credentials.find_credentials(account_type)
 
 def if_credentials_exist(account_type):
     '''
@@ -104,7 +111,7 @@ def main():
 
             else:
                 print(f"{username} Welcome to Password Locker!!")
-                print("-" *20)        
+                print("*" *40)        
         
         elif short_code == "lg":
             print("Login into your account")
@@ -142,12 +149,23 @@ def main():
                         break
                     else: 
                         print("Choose either of the above")
-                save_credentials(create_credentials(account, account_username, account_password))
+                save_credentials(create_credentials(account, account_username, password))
 
                 print("\n")
-                print(f"Account for {account}. {account_username} created successfully")
+                print(f"Account for {account}, username {account_username} created successfully")
             
-            elif short_code == "dl"
+            elif short_code == "dl":
+                print("Enter the account for the credentials you want to delete")
+                search_account = input().strip()
+                if find_credentials(search_account):
+                    search_credentials = find_credentials(search_account)
+                    search_credentials.delete_credentials()
+
+                    print("\n")
+                    print(f"Your {search_account} credentials have been successfully deleted!!!")
+                else:
+                    print(f"The credentials you are looking for cannot be found.")
+
 
 
                     
