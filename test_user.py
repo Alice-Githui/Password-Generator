@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 
 
 from user import User 
@@ -43,6 +44,7 @@ class TestCredentials(unittest.TestCase):
         set up method that determines the properties of the credentials object
         '''
         self.new_credentials = Credentials("Instagram", "githui", "1wergxvh")
+
 
     def tearDown(self):
         '''
@@ -121,8 +123,6 @@ class TestCredentials(unittest.TestCase):
         test to check if all our credentials in the cred_list list are being displayed
         '''
         self.assertEqual(Credentials.display_credentials(),Credentials.cred_list)
-    
-
 
 if __name__ == "__main__":
     unittest.main()

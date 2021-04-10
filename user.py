@@ -1,4 +1,5 @@
 import random 
+import pyperclip
 
 class User:
     '''
@@ -79,7 +80,7 @@ class Credentials:
             if credentials.account_type == account_type:
                 return True
 
-        return False
+        return False              
     
     def generate_password():
         password = ""

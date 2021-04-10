@@ -68,7 +68,7 @@ def main():
     print("\n")
 
     while True:
-        print("Use these short-codes: cu - create user, lg - login into the account")
+        print("Use these short-codes: cu - create user, lg - login into the account, ez - exit account")
 
         short_code = input().lower()
 
@@ -110,7 +110,7 @@ def main():
                 entered_password = input()
 
             else:
-                print(f"{username} Welcome to Password Locker!!")
+                print(f"Hello {username}. Welcome to Password Locker!!")
                 print("*" *40)        
         
         elif short_code == "lg":
@@ -122,84 +122,84 @@ def main():
 
             print(f"{login_username}. You have successfully logged in to your account") 
 
-        while True:
-            print("Use these short codes to proceed: cc - create new credentials, dc - display credentials, dl- delete credentials,  ex - exit the app")
+            while True:
+                print("Use these short codes to proceed: cc - create new credentials, dc - display credentials, cp - copy credentials, dl- delete credentials,  ex - exit the app")
 
-            short_code = input().lower().strip()
+                short_code = input().lower().strip()
 
-            if short_code == "cc":
-                print("Create new account credentials: .... ")
-                print("-" *30)
-                print("Which app are you creating a password?")
-                account = input()
-                print("Enter the preferred username:")
-                account_username =  input()
+                if short_code == "cc":
+                    print("Create new account credentials: .... ")
+                    print("-" *30)
+                    print("Which app are you creating a password?")
+                    account = input()
+                    print("Enter the preferred username:")
+                    account_username =  input()
 
-                while True:
-                    print("Use these to generate a password: op - own password, gp - generated password")
+                    while True:
+                        print("Use these to generate a password: op - own password, gp - generated password")
 
-                    password_Type = input().lower().strip()
+                        password_Type = input().lower().strip()
 
-                    if password_Type == "gp":
-                        password = generate_random_password()
-                        break
-                    elif password_Type == "op":
-                        print("Enter a password")
-                        password = input()
-                        break
-                    else: 
-                        print("Choose either of the above")
-                save_credentials(create_credentials(account, account_username, password))
-
-                print("\n")
-                print(f"Account for {account}, username {account_username} created successfully")
-            
-            elif short_code == "dc":
-                print("Displaying all the contacts that are saved in the cred_list")
-
-                if display_all_credentials():
-                    print ("Here are all of your accounts")
+                        if password_Type == "gp":
+                            password = generate_random_password()
+                            break
+                        elif password_Type == "op":
+                            print("Enter a password")
+                            password = input()
+                            break
+                        else: 
+                            print("Choose either of the above")
+                    save_credentials(create_credentials(account, account_username, password))
 
                     print("\n")
-                    for credentials in display_all_credentials():
-                        print(f"Account Name:{credentials.account_type}; user-name:{credentials.account_user_name}")
+                    print(f"Account for {account}, username {account_username} created successfully")
+                    print("-" * 60)
+                
+                elif short_code == "dc":
+                    print("Displaying all the contacts that are saved in the cred_list")
+
+                    if display_all_credentials():
+                        print ("Here are all of your accounts")
+
                         print("\n")
-                else:
-                    print("You don't sem to have any account details saved")
+                        for credentials in display_all_credentials():
+                            print(f"Account Name:{credentials.account_type}; user-name:{credentials.account_user_name}")
+                            print("\n")
+                    else:
+                        print("You don't sem to have any account details saved")
 
 
-            elif short_code == "dl":
-                print("Enter the account for the credentials you want to delete")
-                search_account = input().strip()
-                if find_credentials(search_account):
-                    search_credentials = find_credentials(search_account)
-                    search_credentials.delete_credentials()
+                elif short_code == "dl":
+                    print("Enter the account for the credentials you want to delete")
+                    search_account = input().strip()
+                    if find_credentials(search_account):
+                        search_credentials = find_credentials(search_account)
+                        search_credentials.delete_credentials()
 
-                    print("\n")
-                    print(f"Your {search_account} credentials have been successfully deleted!!!")
-                else:
-                    print(f"The credentials you are looking for cannot be found.")
+                        print("\n")
+                        print(f"Your {search_account} credentials have been successfully deleted!!!")
+                    else:
+                        print(f"The credentials you are looking for cannot be found.")
 
-
-
-
-
-                    
-
-
+                elif short_code =="ex":
+                    print("Thank you for visiting our application. How do you want to proceed?")
+                
+                else: 
+                    print("I didn't get that. Kindly use short codes")
 
 
-        # elif short_code =="ex":
-        #     break   
+        elif short_code =="ez":
+            print("Thank you for visiting our application!. We would like to hear about your experience on our official channels. Goodbye!!")
+            break   
 
-        # else:
-        #     print("I didn't get that. Kindly use short codes")       
+        else:
+            print("Goodbye!")     
+      
 
 
 
 if __name__ =="__main__":
     main()
-
 
 
 
