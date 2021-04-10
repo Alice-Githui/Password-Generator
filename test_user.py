@@ -42,7 +42,7 @@ class TestCredentials(unittest.TestCase):
         '''
         set up method that determines the properties of the credentials object
         '''
-        self.new_credentials = Credentials("githui", "1wergxvh")
+        self.new_credentials = Credentials("Instagram", "githui", "1wergxvh")
 
     def tearDown(self):
         '''
@@ -57,7 +57,7 @@ class TestCredentials(unittest.TestCase):
         '''
         test that checks if our program instatiates as it should
         '''
-
+        self.assertEqual(self.new_credentials.account_type, "Instagram")
         self.assertEqual(self.new_credentials.account_user_name, "githui")
         self.assertEqual(self.new_credentials.account_password, "1wergxvh")
     
@@ -72,9 +72,9 @@ class TestCredentials(unittest.TestCase):
         '''
         test to check if our app saves multiple credentials created in the cred_list list
         '''
-        self.new_credentials = Credentials("two", "deux2")
+        self.new_credentials = Credentials("Facebook","two", "deux2")
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("trois", "trois3")
+        test_credentials = Credentials("Facebook","trois", "trois3")
         test_credentials.save_credentials()
 
         self.assertEqual(len(Credentials.cred_list), 2)
@@ -83,19 +83,32 @@ class TestCredentials(unittest.TestCase):
         '''
         test that checks if we can delete a credential object that is no longer being used
         '''
-        self.new_credentials = Credentials("two", "deux2")
+        self.new_credentials = Credentials("Facebook","two", "deux2")
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("trois", "trois3")
+        test_credentials = Credentials("Facebook","trois", "trois3")
         test_credentials.save_credentials()
 
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.cred_list), 1)
+
+    def test_if_credentials_exist(self):
+        '''
+        test that checks to confirm if an already entered credentials exists
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Twitter","alice", "iuhtig")
+        test_credentials.save_credentials()
+
+        credentials_exist = Credentials.credentials_exist("Twitter")
+        self.assertTrue(credentials_exist)
+
 
     def test_display_credentials(self):
         '''
         test to check if all our credentials in the cred_list list are being displayed
         '''
         self.assertEqual(Credentials.display_credentials(),Credentials.cred_list)
+    
 
 
 if __name__ == "__main__":

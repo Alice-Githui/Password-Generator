@@ -1,3 +1,5 @@
+import random 
+
 class User:
     '''
     class that generates an object of user
@@ -29,10 +31,11 @@ class Credentials:
     '''
     cred_list = []
 
-    def __init__(self, account_user_name, account_password):
+    def __init__(self, account_type, account_user_name, account_password):
         '''
         defines the properties of the credentials object
         '''
+        self.account_type = account_type
         self.account_user_name = account_user_name
         self.account_password = account_password
 
@@ -54,6 +57,32 @@ class Credentials:
         method to display all the credentials in the cred_list list
         '''
         return cls.cred_list
+
+    @classmethod
+    def credentials_exist(cls, account_type):
+        '''
+        method that checks if credentials exists using a account-name. Returns a boolean
+
+        Args:
+        account-type to search for
+        '''
+        for credentials in cls.cred_list:
+            if credentials.account_type == account_type:
+                return True
+
+        return False
+    
+    def generate_password(passlength):
+        password = ""
+        for i in range(passlength):
+            i = chr(random.randint(65,90))
+            j = chr(random.randint(65,90)).lower()
+            k = random.randint(0,9)
+            password = str(password) + i + j +str(k)
+
+        print(password)
+
+
 
     
   
