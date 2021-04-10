@@ -72,9 +72,9 @@ class Credentials:
 
         return False
     
-    def generate_password(passlength):
+    def generate_password():
         password = ""
-        for i in range(passlength):
+        for i in range(8):
             i = chr(random.randint(65,90))
             j = chr(random.randint(65,90)).lower()
             k = random.randint(0,9)

@@ -16,11 +16,11 @@ def save_new_user(user):
     '''
     user.save_user()
 
-def create_credentials(credentials):
+def create_credentials(account, account_username, account_password):
     '''
     Function that creates new account credentials
     '''
-    credentials.create_new_credentials()
+    new_credentials = Credentials(account, account_username, account_password)
 
 def save_credentials(credentials):
     '''
@@ -61,13 +61,13 @@ def main():
     print("\n")
 
     while True:
-        print("Use these short-codes: cu - create user, lg - login into the account, ex-exit the system")
+        print("Use these short-codes: cu - create user, lg - login into the account")
 
         short_code = input().lower()
 
         if short_code == "cu":
             print("New User")
-            print("-" * 20)
+            print("-" *20)
 
             print("Enter preferred username")
             username = input()
@@ -104,7 +104,7 @@ def main():
 
             else:
                 print(f"{username} Welcome to Password Locker!!")
-                print("-" * 20)        
+                print("-" *20)        
         
         elif short_code == "lg":
             print("Login into your account")
@@ -115,11 +115,51 @@ def main():
 
             print(f"{login_username}. You have successfully logged in to your account") 
 
-        elif short_code =="ex":
-            break   
+        while True:
+            print("Use these short codes to proceed: cc - create new credentials, dl- delete credentials, dc - display credentials, ex - exit the app")
 
-        else:
-            print("I didn't get that. Kindly use short codes")       
+            short_code = input().lower().strip()
+
+            if short_code == "cc":
+                print("Create new account credentials: .... ")
+                print("-" *30)
+                print("Which app are you creating a password?")
+                account = input()
+                print("Enter the preferred username:")
+                account_username =  input()
+
+                while True:
+                    print("Use these to generate a password: op - own password, gp - generated password")
+
+                    password_Type = input().lower().strip()
+
+                    if password_Type == "gp":
+                        password = generate_random_password()
+                        break
+                    elif password_Type == "op":
+                        print("Enter a password")
+                        password = input()
+                        break
+                    else: 
+                        print("Choose either of the above")
+                save_credentials(create_credentials(account, account_username, account_password))
+
+                print("\n")
+                print(f"Account for {account}. {account_username} created successfully")
+            
+            elif short_code == "dl"
+
+
+                    
+
+
+
+
+        # elif short_code =="ex":
+        #     break   
+
+        # else:
+        #     print("I didn't get that. Kindly use short codes")       
 
 
 
