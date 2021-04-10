@@ -58,7 +58,7 @@ def main():
     user_name = input("Enter your username: ")
 
     print(f"Hello {user_name}. What would you like to do?")
-    print("/n")
+    print("\n")
 
     while True:
         print("Use these short-codes: cu - create user, lg - login into the account, ex-exit the system")
@@ -86,7 +86,7 @@ def main():
                 print("Confirm your password")
                 confirm_password = input()
             else: 
-                print("/n")
+                print(f"Account successfully created. {username} welcome to your password locker account")
                 print(f"New User: {username} created")
                 print("Proceed to login:")
                 print("Enter your username")
@@ -98,9 +98,9 @@ def main():
                 print("Account details do not match")
                 print("Please confirm your account details")
                 print("Username")
-                username = input()
+                entered_username = input()
                 print("Password")
-                password = input()
+                entered_password = input()
 
             else:
                 print(f"{username} Welcome to Password Locker!!")
@@ -108,7 +108,18 @@ def main():
         
         elif short_code == "lg":
             print("Login into your account")
-            print
+            print("Enter your username:")
+            login_username = input()
+            print("Enter your password")
+            login_password = input()
+
+            print(f"{login_username}. You have successfully logged in to your account") 
+
+        elif short_code =="ex":
+            break   
+
+        else:
+            print("I didn't get that. Kindly use short codes")       
 
 
 
