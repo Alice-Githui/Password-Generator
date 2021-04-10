@@ -4,11 +4,12 @@ This project was created by Alice Githui.
 
 ## Description
 This is an application that helps manage passwords and generate new passwords for the user. The app:
-(a) stores credentials for already existing social account,
-(b) It can also generate new account credentials when the user signs up for a new social account,
-(c) In addition to generating a new password, the app allows the user to input their own chosen passwords. 
-(d) It also allows you to view the saved account credentials and passwords. 
-(e) One can also delete credentials that they no longer need.
+
+ - stores credentials for already existing social account,
+ - It can also generate new account credentials when the user signs up for a new social account,
+ - In addition to generating a new password, the app allows the user to input their own chosen passwords. 
+ - It also allows you to view the saved account credentials and passwords. 
+ - One can also delete credentials that they no longer need.
 
 ## Technologies Used
 
