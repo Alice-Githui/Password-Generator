@@ -46,6 +46,14 @@ def display_all_credentials():
     '''
     return Credentials.display_credentials()
 
+def main():
+    print("Welcome to the Password Locker App")
+
+
+if __name__ =="__main__":
+    main()
+
+
 
 
 
