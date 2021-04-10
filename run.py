@@ -123,7 +123,7 @@ def main():
             print(f"{login_username}. You have successfully logged in to your account") 
 
         while True:
-            print("Use these short codes to proceed: cc - create new credentials, dl- delete credentials, dc - display credentials, ex - exit the app")
+            print("Use these short codes to proceed: cc - create new credentials, dc - display credentials, dl- delete credentials,  ex - exit the app")
 
             short_code = input().lower().strip()
 
@@ -154,6 +154,20 @@ def main():
                 print("\n")
                 print(f"Account for {account}, username {account_username} created successfully")
             
+            elif short_code == "dc":
+                print("Displaying all the contacts that are saved in the cred_list")
+
+                if display_all_credentials():
+                    print ("Here are all of your accounts")
+
+                    print("\n")
+                    for credentials in display_all_credentials():
+                        print(f"Account Name:{credentials.account_type}; user-name:{credentials.account_user_name}")
+                        print("\n")
+                else:
+                    print("You don't sem to have any account details saved")
+
+
             elif short_code == "dl":
                 print("Enter the account for the credentials you want to delete")
                 search_account = input().strip()
@@ -165,6 +179,8 @@ def main():
                     print(f"Your {search_account} credentials have been successfully deleted!!!")
                 else:
                     print(f"The credentials you are looking for cannot be found.")
+
+
 
 
 
