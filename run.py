@@ -46,8 +46,70 @@ def display_all_credentials():
     '''
     return Credentials.display_credentials()
 
+def generate_random_password():
+    '''
+    Function that generates a random password for the user
+    '''
+    auto_password = Credentials.generate_password()
+    return auto_password
+
 def main():
-    print("Welcome to the Password Locker App")
+    print("Password Locker App")
+    user_name = input("Enter your username: ")
+
+    print(f"Hello {user_name}. What would you like to do?")
+    print("/n")
+
+    while True:
+        print("Use these short-codes: cu - create user, lg - login into the account, ex-exit the system")
+
+        short_code = input().lower()
+
+        if short_code == "cu":
+            print("New User")
+            print("-" * 20)
+
+            print("Enter preferred username")
+            username = input()
+
+            print("Enter preferred password")
+            password = input()
+
+            print("Confirm password")
+            confirm_password = input()
+
+
+            while confirm_password != password:
+                print("Passwords do not match")
+                print("Enter your password:")
+                password = input()
+                print("Confirm your password")
+                confirm_password = input()
+            else: 
+                print("/n")
+                print(f"New User: {username} created")
+                print("Proceed to login:")
+                print("Enter your username")
+                entered_username = input()
+                print("Enter your password")
+                entered_password = input()
+            
+            while entered_username != username or entered_password != password:
+                print("Account details do not match")
+                print("Please confirm your account details")
+                print("Username")
+                username = input()
+                print("Password")
+                password = input()
+
+            else:
+                print(f"{username} Welcome to Password Locker!!")
+                print("-" * 20)        
+        
+        elif short_code == "lg":
+            print("Login into your account")
+            print
+
 
 
 if __name__ =="__main__":
